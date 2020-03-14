@@ -23,9 +23,10 @@ const App = () => {
   }
 
   return (
-    <ul>
+    //data-testid="list" so we can use getByTestId on test case
+    <ul data-testid="list"> 
       {posts.map(item => (
-        <li key={item.key}>{item.title}</li>
+        <li key={item.id}>{item.title}</li>
       ))}
     </ul>
   );
