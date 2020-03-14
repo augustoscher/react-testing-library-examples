@@ -9,7 +9,7 @@ const App = () => {
 
     const getPosts = async () => {
       const results = await fetchPosts();
-      if (mounted) { //render only if componente is mounted
+      if (mounted) {//render only if componente is mounted
         setPosts(results);
       }
     };
@@ -18,6 +18,8 @@ const App = () => {
     return () => { mounted = false; };
   }, []);
 
+  const filterFirstTenPosts = () => setPosts(posts.slice(0, 10));
+
   if (!posts) {
     return <span>Loading...</span>;
   }
@@ -25,11 +27,9 @@ const App = () => {
   return (
     //data-testid="list" so we can use getByTestId on test case
     <>
-      <button>Filter</button>
-      <ul data-testid="list"> 
-        {posts.map(item => (
-          <li key={item.id}>{item.title}</li>
-        ))}
+      <button onClick={filterFirstTenPosts}>Filter</button>
+      <ul data-testid="list">
+        { posts.map(item => (<li key={item.id}>{item.title}</li>)) }
       </ul>
     </>
   );
