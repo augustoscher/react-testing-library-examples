@@ -24,11 +24,14 @@ const App = () => {
 
   return (
     //data-testid="list" so we can use getByTestId on test case
-    <ul data-testid="list"> 
-      {posts.map(item => (
-        <li key={item.id}>{item.title}</li>
-      ))}
-    </ul>
+    <>
+      <button>Filter</button>
+      <ul data-testid="list"> 
+        {posts.map(item => (
+          <li key={item.id}>{item.title}</li>
+        ))}
+      </ul>
+    </>
   );
 };
 
